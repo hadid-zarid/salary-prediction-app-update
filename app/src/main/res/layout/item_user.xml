@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/divider"
+    app:strokeWidth="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Role Indicator -->
+        <View
+            android:id="@+id/roleIndicator"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="@drawable/indicator_user"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- User Avatar -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/avatarCard"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="12dp"
+            app:cardBackgroundColor="@color/primary_light"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="0dp"
+            app:layout_constraintStart_toEndOf="@id/roleIndicator"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_people"
+                app:tint="@color/primary"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- User Info -->
+        <LinearLayout
+            android:id="@+id/userInfoLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="12dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/avatarCard"
+            app:layout_constraintEnd_toStartOf="@id/userRoleText"
+            app:layout_constraintStart_toEndOf="@id/avatarCard"
+            app:layout_constraintTop_toTopOf="@id/avatarCard">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/userNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="John Doe"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="John Doe" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/userEmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="john@example.com"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp"
+                tools:text="john@example.com" />
+
+        </LinearLayout>
+
+        <!-- Role Badge -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/userRoleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_role_user"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="USER"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/avatarCard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/avatarCard"
+            tools:text="ADMIN" />
+
+        <!-- Join Date -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/joinDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:text="Bergabung: 1 Jan 2024"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/calendar_today_24px"
+            app:drawableTint="@color/text_secondary"
+            app:layout_constraintStart_toEndOf="@id/roleIndicator"
+            app:layout_constraintTop_toBottomOf="@id/avatarCard"
+            tools:text="Bergabung: 1 Jan 2024" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

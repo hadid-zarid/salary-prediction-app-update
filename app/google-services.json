@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "23706336458",
+    "project_id": "auth-android-app-c236e",
+    "storage_bucket": "auth-android-app-c236e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23706336458:android:53b8322d95aa889058c833",
+        "android_client_info": {
+          "package_name": "com.example.salaryprediction"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7vuU8TTK9_t9mjNKG4FCnWJytQXczZQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

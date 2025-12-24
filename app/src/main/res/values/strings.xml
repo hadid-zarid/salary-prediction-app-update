@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Salary Prediction</string>
+
+    <!-- Login Screen -->
+    <string name="login_title">Masuk</string>
+    <string name="login_subtitle">Silakan masuk untuk melanjutkan</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button">Masuk</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="register_link">Daftar</string>
+
+    <!-- Register Screen -->
+    <string name="register_title">Daftar</string>
+    <string name="register_subtitle">Buat akun baru untuk memulai</string>
+    <string name="name_hint">Nama Lengkap</string>
+    <string name="confirm_password_hint">Konfirmasi Password</string>
+    <string name="register_button">Daftar Sekarang</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="login_link">Masuk</string>
+
+    <!-- Dashboard Screen -->
+    <string name="welcome">Selamat Datang</string>
+    <string name="account_info">Informasi Akun</string>
+    <string name="email_label">Email</string>
+    <string name="role_label">Role</string>
+    <string name="member_since">Member Sejak</string>
+    <string name="logout">Keluar</string>
+
+    <!-- Admin Screen -->
+    <string name="admin_panel">Admin Panel</string>
+    <string name="total_users">Total Users</string>
+    <string name="user_list">Daftar User</string>
+    <string name="refresh">Refresh</string>
+    <string name="empty_state">Belum ada user terdaftar</string>
+
+    <!-- Roles -->
+    <string name="role_admin">Administrator</string>
+    <string name="role_user">User Biasa</string>
+
+    <!-- Errors -->
+    <string name="error_empty_email">Email tidak boleh kosong</string>
+    <string name="error_invalid_email">Format email tidak valid</string>
+    <string name="error_empty_password">Password tidak boleh kosong</string>
+    <string name="error_short_password">Password minimal 6 karakter</string>
+    <string name="error_empty_name">Nama tidak boleh kosong</string>
+    <string name="error_short_name">Nama minimal 3 karakter</string>
+    <string name="error_password_mismatch">Password tidak sama</string>
+    <string name="error_login_failed">Login gagal</string>
+    <string name="error_register_failed">Registrasi gagal</string>
+    <string name="error_load_data">Gagal memuat data</string>
+
+    <!-- Success Messages -->
+    <string name="login_success">Login berhasil!</string>
+    <string name="register_success">Registrasi berhasil!</string>
+    <string name="welcome_message">Selamat datang %s</string>
+
+    <!-- Loading -->
+    <string name="loading">Memuat...</string>
+</resources>
