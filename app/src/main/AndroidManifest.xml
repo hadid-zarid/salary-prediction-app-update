@@ -18,17 +18,30 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- Login Activity (LAUNCHER) -->
+        <!-- Splash Activity (LAUNCHER) -->
         <activity
-            android:name=".auth.LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize">
+            android:theme="@style/Theme.SalaryPrediction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Onboarding Activity -->
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".auth.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Register Activity -->
         <activity

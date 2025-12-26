@@ -23,8 +23,8 @@ class OnboardingActivity : AppCompatActivity() {
             val sharedPref = getSharedPreferences("JobspotPrefs", MODE_PRIVATE)
             sharedPref.edit().putBoolean("isFirstTime", false).apply()
 
-            // Navigate to MainActivity
-            val intent = Intent(this, MainActivity::class.java)
+            // Navigate to LoginActivity
+            val intent = Intent(this, com.example.salaryprediction.auth.LoginActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -32,8 +32,8 @@ class SplashActivity : AppCompatActivity() {
             // First time user → Go to Onboarding
             Intent(this, OnboardingActivity::class.java)
         } else {
-            // Returning user → Go directly to MainActivity
-            Intent(this, MainActivity::class.java)
+            // Returning user → Go to Login (akan auto-redirect jika sudah login)
+            Intent(this, com.example.salaryprediction.auth.LoginActivity::class.java)
         }
 
         startActivity(intent)
