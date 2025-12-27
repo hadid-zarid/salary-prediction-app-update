@@ -20,12 +20,8 @@ import com.example.salaryprediction.dashboard.DashboardActivity
 import com.example.salaryprediction.models.TopSalaryLocation
 import com.example.salaryprediction.models.TrendingJob
 import com.google.android.material.card.MaterialCardView
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
 import org.json.JSONObject
-import java.text.NumberFormat
-import java.util.Locale
 
 class HomeFragment : Fragment() {
 
@@ -109,18 +105,18 @@ class HomeFragment : Fragment() {
 
     private fun loadDataFromAssets() {
         try {
-            // Baca file JSON dari assets
+            // Baca file home_data.json dari assets
             val jsonString = requireContext().assets
-                .open("lookup_data.json")
+                .open("home_data.json")
                 .bufferedReader()
                 .use { it.readText() }
 
             val jsonObject = JSONObject(jsonString)
 
-            // Load Trending Jobs (dari judul_mean - top 10 gaji tertinggi)
+            // Load Trending Jobs
             loadTrendingJobs(jsonObject)
 
-            // Load Top Salary Locations (dari lokasi_mean - top 10 lokasi gaji tertinggi)
+            // Load Top Salary Locations
             loadTopSalaryLocations(jsonObject)
 
         } catch (e: Exception) {
@@ -130,24 +126,22 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadTrendingJobs(jsonObject: JSONObject) {
-        val judulMean = jsonObject.getJSONObject("judul_mean")
+        val trendingJobsArray = jsonObject.getJSONArray("trending_jobs")
         val jobList = mutableListOf<TrendingJob>()
 
-        // Iterate dan ambil semua job titles
-        val keys = judulMean.keys()
-        while (keys.hasNext()) {
-            val title = keys.next()
-            val salary = judulMean.getDouble(title)
-            jobList.add(TrendingJob(title, salary, formatSalary(salary)))
+        for (i in 0 until trendingJobsArray.length()) {
+            val jobObj = trendingJobsArray.getJSONObject(i)
+            jobList.add(
+                TrendingJob(
+                    title = jobObj.getString("title"),
+                    salary = jobObj.getDouble("salary"),
+                    salaryFormatted = formatSalary(jobObj.getDouble("salary"))
+                )
+            )
         }
 
-        // Sort descending by salary dan ambil top 10
-        val top10Jobs = jobList
-            .sortedByDescending { it.salary }
-            .take(10)
-
         // Setup adapter
-        val adapter = TrendingJobAdapter(top10Jobs) { job ->
+        val adapter = TrendingJobAdapter(jobList) { job ->
             // Klik item -> buka MainActivity dengan pre-fill job title
             val intent = Intent(requireContext(), MainActivity::class.java).apply {
                 putExtra("JOB_TITLE", job.title)
@@ -158,31 +152,23 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadTopSalaryLocations(jsonObject: JSONObject) {
-        val lokasiMean = jsonObject.getJSONObject("lokasi_mean")
+        val locationsArray = jsonObject.getJSONArray("top_salary_locations")
         val locationList = mutableListOf<TopSalaryLocation>()
 
-        // Iterate dan ambil semua locations
-        val keys = lokasiMean.keys()
-        while (keys.hasNext()) {
-            val location = keys.next()
-            val salary = lokasiMean.getDouble(location)
+        for (i in 0 until locationsArray.length()) {
+            val locObj = locationsArray.getJSONObject(i)
             locationList.add(
                 TopSalaryLocation(
-                    location = location,
-                    salary = salary,
-                    salaryFormatted = formatSalaryShort(salary),
-                    topJobTitle = "Various Jobs" // Bisa di-customize nanti
+                    location = locObj.getString("location"),
+                    salary = locObj.getDouble("avgSalary"),
+                    salaryFormatted = formatSalaryShort(locObj.getDouble("avgSalary")),
+                    topJobTitle = locObj.getString("topJobTitle")
                 )
             )
         }
 
-        // Sort descending by salary dan ambil top 10
-        val top10Locations = locationList
-            .sortedByDescending { it.salary }
-            .take(10)
-
         // Setup adapter
-        val adapter = TopSalaryAdapter(top10Locations) { location ->
+        val adapter = TopSalaryAdapter(locationList) { location ->
             // Klik item -> buka MainActivity dengan pre-fill location
             val intent = Intent(requireContext(), MainActivity::class.java).apply {
                 putExtra("LOCATION", location.location)

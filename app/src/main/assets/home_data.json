@@ -1,0 +1,136 @@
+{
+  "trending_jobs": [
+    {
+      "title": "Construction Manager",
+      "salary": 39125178,
+      "count": 3
+    },
+    {
+      "title": "Area Sales Manager - Jawa Timur, Surabaya",
+      "salary": 34233365,
+      "count": 2
+    },
+    {
+      "title": "Field Collection Staff- Lokasi: MANADO",
+      "salary": 31627400,
+      "count": 2
+    },
+    {
+      "title": "Leasing and Tenant Relation Manager KNIC (Mandarin Speaker)",
+      "salary": 29131478,
+      "count": 2
+    },
+    {
+      "title": "Senior Manager Digital Marketing",
+      "salary": 25478281,
+      "count": 2
+    },
+    {
+      "title": "SENIOR SALES MANAGER",
+      "salary": 25166667,
+      "count": 3
+    },
+    {
+      "title": "Finance, Accounting & Tax manager",
+      "salary": 25000000,
+      "count": 2
+    },
+    {
+      "title": "FINANCE MANAGER",
+      "salary": 24500000,
+      "count": 2
+    },
+    {
+      "title": "Senior Brand Manager",
+      "salary": 21134742,
+      "count": 2
+    },
+    {
+      "title": "Business Development Manager",
+      "salary": 19526485,
+      "count": 15
+    }
+  ],
+  "top_salary_locations": [
+    {
+      "location": "Tenggarong",
+      "avgSalary": 20331741,
+      "topJobTitle": "Biodiversity and Conservation Manager",
+      "topJobSalary": 27500000,
+      "company": "PT Tirta Carbon Indonesia",
+      "jobCount": 8
+    },
+    {
+      "location": "Bekasi Selatan",
+      "avgSalary": 15192767,
+      "topJobTitle": "Construction Manager",
+      "topJobSalary": 62500000,
+      "company": "PT Zensho Indonesia",
+      "jobCount": 8
+    },
+    {
+      "location": "Kabupaten Bandung",
+      "avgSalary": 12640638,
+      "topJobTitle": "HR&GA Manager",
+      "topJobSalary": 12728256,
+      "company": "pt.anugerah megah lestari textile",
+      "jobCount": 667
+    },
+    {
+      "location": "Tarakan",
+      "avgSalary": 12447072,
+      "topJobTitle": "Dokter Estetika",
+      "topJobSalary": 12500000,
+      "company": "Ahava Prime Skincare",
+      "jobCount": 664
+    },
+    {
+      "location": "Sumatera Utara",
+      "avgSalary": 10207612,
+      "topJobTitle": "Business Coach GRATYO MEDAN",
+      "topJobSalary": 62500000,
+      "company": "GRATYO Global Awards Winning Business Coaching Company",
+      "jobCount": 20
+    },
+    {
+      "location": "Penjaringan",
+      "avgSalary": 10074464,
+      "topJobTitle": "Sales Assistant Manager (Bahan Bangunan)",
+      "topJobSalary": 21000000,
+      "company": "PT. INTISUMBER BAJASAKTI",
+      "jobCount": 13
+    },
+    {
+      "location": "Cikarang Pusat",
+      "avgSalary": 10012160,
+      "topJobTitle": "Japanese Speaker Forwarding Manager -Forwarding (A-119331)",
+      "topJobSalary": 37500000,
+      "company": "RGF HR Agent Indonesia",
+      "jobCount": 69
+    },
+    {
+      "location": "Kalimantan Timur",
+      "avgSalary": 9874828,
+      "topJobTitle": "Civil Construction Site Mgr. (Mandarin Speaker)-Real Estate-Kalimantan(A-119709)",
+      "topJobSalary": 30000000,
+      "company": "RGF HR Agent Indonesia",
+      "jobCount": 61
+    },
+    {
+      "location": "Sulawesi Selatan",
+      "avgSalary": 9823884,
+      "topJobTitle": "Business Coach GRATYO MAKASSAR",
+      "topJobSalary": 62500000,
+      "company": "GRATYO Global Awards Winning Business Coaching Company",
+      "jobCount": 17
+    },
+    {
+      "location": "Cikarang Selatan",
+      "avgSalary": 9793954,
+      "topJobTitle": "Deputy General Manager - Factory Operation",
+      "topJobSalary": 35000000,
+      "company": "PT Jiangsu Hengli Hydraulic Indonesia",
+      "jobCount": 52
+    }
+  ]
+}

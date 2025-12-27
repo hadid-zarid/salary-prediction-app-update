@@ -126,10 +126,10 @@
             android:paddingHorizontal="20dp"
             android:layout_marginBottom="12dp">
 
-            <View
-                android:layout_width="4dp"
-                android:layout_height="20dp"
-                android:background="@color/primary" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/performance" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -161,10 +161,10 @@
             android:paddingHorizontal="20dp"
             android:layout_marginBottom="12dp">
 
-            <View
-                android:layout_width="4dp"
-                android:layout_height="20dp"
-                android:background="@color/accent" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/map" />
 
             <TextView
                 android:layout_width="wrap_content"
