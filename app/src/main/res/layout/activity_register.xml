@@ -36,7 +36,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginHorizontal="20dp"
             android:gravity="center"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+            android:text="Take control of your career. Get personalized salary insights today"
             android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:lineSpacingExtra="4dp"

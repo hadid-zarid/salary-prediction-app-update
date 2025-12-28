@@ -1,477 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F4FF">
+    android:background="@color/white">
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="@color/text_primary"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:fillViewport="true"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <!-- Gradient Header with Wave -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="28dp"
+            android:paddingBottom="32dp">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/gradient_header_bg" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:paddingTop="24dp"
-                    android:paddingHorizontal="24dp">
-
-                    <!-- Icon Container -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        app:cardCornerRadius="28dp"
-                        app:cardElevation="6dp"
-                        app:cardBackgroundColor="#FFFFFF">
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Prediksi Gaji"
-                        android:textSize="22sp"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="Temukan estimasi gaji impianmu"
-                        android:textSize="12sp"
-                        android:textColor="#E8EAFF"
-                        android:alpha="0.9" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textSize="26sp" />
-
-                </LinearLayout>
-
-            </FrameLayout>
-
-            <!-- Main Content Card -->
-            <androidx.cardview.widget.CardView
+            <!-- Title -->
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-20dp"
-                android:layout_marginHorizontal="16dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="#FFFFFF">
+                android:gravity="center"
+                android:text="Estimasi Gaji"
+                android:textColor="@color/primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:fontFamily="serif" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="18dp">
+            <!-- Main Illustration -->
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="32dp"
+                android:src="@drawable/estimate"
+                android:scaleType="fitCenter"
+                android:contentDescription="Illustration" />
 
-                    <!-- Job Title Section -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="8dp">
+            <!-- Lokasi Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lokasi"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                        <View
-                            android:layout_width="4dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/accent_bar" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="Posisi Pekerjaan"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="*"
-                            android:textSize="14sp"
-                            android:textColor="#EF4444" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:boxCornerRadiusTopStart="16dp"
-                        app:boxCornerRadiusTopEnd="16dp"
-                        app:boxCornerRadiusBottomStart="16dp"
-                        app:boxCornerRadiusBottomEnd="16dp"
-                        app:boxStrokeColor="@color/input_stroke_color"
-                        app:boxStrokeWidth="1.5dp"
-                        app:boxBackgroundColor="#F8FAFC"
-                        app:hintEnabled="false"
-                        app:startIconDrawable="@drawable/ic_work"
-                        app:startIconTint="#6366F1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etJobTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:hint="Contoh: Backend Developer"
-                            android:inputType="text"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textColorHint="#94A3B8" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Location Section -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginBottom="6dp">
-
-                        <View
-                            android:layout_width="4dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/accent_bar" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="Lokasi Kerja"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="*"
-                            android:textSize="14sp"
-                            android:textColor="#EF4444" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:boxCornerRadiusTopStart="16dp"
-                        app:boxCornerRadiusTopEnd="16dp"
-                        app:boxCornerRadiusBottomStart="16dp"
-                        app:boxCornerRadiusBottomEnd="16dp"
-                        app:boxStrokeColor="@color/input_stroke_color"
-                        app:boxStrokeWidth="1.5dp"
-                        app:boxBackgroundColor="#F8FAFC"
-                        app:hintEnabled="false"
-                        app:startIconDrawable="@drawable/ic_location"
-                        app:startIconTint="#6366F1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etLocation"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:hint="Contoh: Jakarta Selatan"
-                            android:inputType="text"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textColorHint="#94A3B8" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Company Section -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginBottom="6dp">
-
-                        <View
-                            android:layout_width="4dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/accent_bar_secondary" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="Perusahaan"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="(Opsional)"
-                            android:textSize="12sp"
-                            android:textColor="#94A3B8" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        app:boxCornerRadiusTopStart="16dp"
-                        app:boxCornerRadiusTopEnd="16dp"
-                        app:boxCornerRadiusBottomStart="16dp"
-                        app:boxCornerRadiusBottomEnd="16dp"
-                        app:boxStrokeColor="@color/input_stroke_color"
-                        app:boxStrokeWidth="1.5dp"
-                        app:boxBackgroundColor="#F8FAFC"
-                        app:hintEnabled="false"
-                        app:startIconDrawable="@drawable/ic_business"
-                        app:startIconTint="#6366F1">
-
-                        <AutoCompleteTextView
-                            android:id="@+id/actvCompany"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:hint="Pilih atau ketik perusahaan"
-                            android:inputType="none"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textColorHint="#94A3B8"
-                            android:paddingStart="0dp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <!-- Experience Level Chips -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginBottom="6dp">
-
-                        <View
-                            android:layout_width="4dp"
-                            android:layout_height="20dp"
-                            android:background="@drawable/accent_bar_secondary" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="Level Pengalaman"
-                            android:textSize="14sp"
-                            android:textColor="#1E293B"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="(Opsional)"
-                            android:textSize="12sp"
-                            android:textColor="#94A3B8" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chipGroupExperience"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:singleSelection="true"
-                        app:selectionRequired="false">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipFresh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fresh Graduate"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/chip_bg_color"
-                            app:chipStrokeColor="@color/chip_stroke_color"
-                            app:chipStrokeWidth="1dp"
-                            app:chipCornerRadius="12dp"
-                            android:textColor="@color/chip_text_color" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipJunior"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Junior (1-2 th)"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/chip_bg_color"
-                            app:chipStrokeColor="@color/chip_stroke_color"
-                            app:chipStrokeWidth="1dp"
-                            app:chipCornerRadius="12dp"
-                            android:textColor="@color/chip_text_color" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipMid"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Mid (3-5 th)"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/chip_bg_color"
-                            app:chipStrokeColor="@color/chip_stroke_color"
-                            app:chipStrokeWidth="1dp"
-                            app:chipCornerRadius="12dp"
-                            android:textColor="@color/chip_text_color" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipSenior"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Senior (5+ th)"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            app:chipBackgroundColor="@color/chip_bg_color"
-                            app:chipStrokeColor="@color/chip_stroke_color"
-                            app:chipStrokeWidth="1dp"
-                            app:chipCornerRadius="12dp"
-                            android:textColor="@color/chip_text_color" />
-
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <!-- Predict Button -->
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btnPredict"
-                        android:layout_width="match_parent"
-                        android:layout_height="52dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Prediksi Gaji Sekarang"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="false"
-                        app:cornerRadius="14dp"
-                        app:backgroundTint="@color/button_gradient"
-                        android:textColor="#FFFFFF"
-                        app:icon="@drawable/ic_search"
-                        app:iconGravity="textStart"
-                        app:iconTint="#FFFFFF"
-                        app:iconPadding="10dp"
-                        android:elevation="6dp"
-                        android:stateListAnimator="@animator/button_elevation" />
-
-                    <!-- Secondary Info -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginTop="12dp">
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ic_info"
-                            app:tint="#94A3B8" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
-                            android:text="Data berdasarkan riset pasar terkini"
-                            android:textSize="12sp"
-                            android:textColor="#94A3B8" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <!-- Result Card -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardResult"
+            <!-- Lokasi Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutLocation"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="6dp"
-                app:cardBackgroundColor="#FFFFFF"
-                android:visibility="gone">
+                android:layout_marginTop="8dp"
+                app:boxBackgroundColor="@color/input_background"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeColor="@color/input_stroke"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1.5dp"
+                app:hintEnabled="false">
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="56dp"
+                    android:hint="Contoh: Jakarta Selatan"
+                    android:inputType="text"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="15sp" />
 
-                    <!-- Result Header -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/result_header_bg"
-                        android:padding="16dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="24sp" />
+            <!-- Jabatan Label -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Jabatan"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:text="Hasil Prediksi"
-                            android:textSize="18sp"
-                            android:textColor="#FFFFFF"
-                            android:textStyle="bold" />
+            <!-- Jabatan Input -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutJobTitle"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxBackgroundColor="@color/input_background"
+                app:boxCornerRadiusBottomEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxStrokeColor="@color/input_stroke"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="1.5dp"
+                app:hintEnabled="false">
 
-                    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etJobTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="Contoh: Product Designer"
+                    android:inputType="text"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="15sp" />
 
-                    <!-- Result Content -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="20dp">
+            </com.google.android.material.textfield.TextInputLayout>
 
-                        <TextView
-                            android:id="@+id/tvResult"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Hasil prediksi akan tampil di sini"
-                            android:textSize="15sp"
-                            android:textColor="#1E293B"
-                            android:lineSpacingExtra="6dp" />
+            <!-- Spacer -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+            <!-- Submit Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPredict"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/primary"
+                android:text="MULAI"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                app:cornerRadius="28dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

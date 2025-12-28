@@ -68,6 +68,12 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <!-- Salary Result Activity -->
+        <activity
+            android:name=".SalaryResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
