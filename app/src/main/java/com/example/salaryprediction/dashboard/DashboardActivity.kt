@@ -5,6 +5,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.salaryprediction.R
+import com.example.salaryprediction.fragments.HistoryFragment
 import com.example.salaryprediction.fragments.HomeFragment
 import com.example.salaryprediction.fragments.NewsFragment
 import com.example.salaryprediction.fragments.ProfileFragment
@@ -33,6 +34,10 @@ class DashboardActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     loadFragment(HomeFragment())
+                    true
+                }
+                R.id.nav_history -> {
+                    loadFragment(HistoryFragment())
                     true
                 }
                 R.id.nav_news -> {

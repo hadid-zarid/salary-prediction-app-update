@@ -5,12 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.salaryprediction.adapters.RecommendedJobAdapter
+import com.example.salaryprediction.models.PredictionHistory
 import com.example.salaryprediction.models.RecommendedJob
+import com.example.salaryprediction.repository.HistoryRepository
 import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.text.NumberFormat
 import java.util.Locale
@@ -24,23 +29,35 @@ class SalaryResultActivity : AppCompatActivity() {
 
     // Data dari intent
     private var predictedSalary: Double = 0.0
+    private var salaryMin: Double = 0.0
+    private var salaryMax: Double = 0.0
     private var inputJobTitle: String = ""
     private var inputLocation: String = ""
+    private var salaryFormatted: String = ""
+    private var rangeFormatted: String = ""
+    private var category: String = ""
+    private var level: String = ""
+    private var tier: String = ""
+
+    private lateinit var historyRepository: HistoryRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_salary_result)
 
+        historyRepository = HistoryRepository.getInstance()
+
         // Get data dari intent
         predictedSalary = intent.getDoubleExtra("PREDICTED_SALARY", 0.0)
         inputJobTitle = intent.getStringExtra("JOB_TITLE") ?: ""
         inputLocation = intent.getStringExtra("LOCATION") ?: ""
-
-        val salaryFormatted = intent.getStringExtra("SALARY_FORMATTED") ?: formatCurrency(predictedSalary)
-        val rangeFormatted = intent.getStringExtra("RANGE_FORMATTED") ?: ""
-        val category = intent.getStringExtra("CATEGORY") ?: ""
-        val level = intent.getStringExtra("LEVEL") ?: ""
-        val tier = intent.getStringExtra("TIER") ?: ""
+        salaryMin = intent.getDoubleExtra("SALARY_MIN", 0.0)
+        salaryMax = intent.getDoubleExtra("SALARY_MAX", 0.0)
+        salaryFormatted = intent.getStringExtra("SALARY_FORMATTED") ?: formatCurrency(predictedSalary)
+        rangeFormatted = intent.getStringExtra("RANGE_FORMATTED") ?: ""
+        category = intent.getStringExtra("CATEGORY") ?: ""
+        level = intent.getStringExtra("LEVEL") ?: ""
+        tier = intent.getStringExtra("TIER") ?: ""
 
         // Set views
         findViewById<TextView>(R.id.tvSubtitle).text = "Detail Gaji untuk $inputJobTitle"
@@ -62,8 +79,39 @@ class SalaryResultActivity : AppCompatActivity() {
             finish()
         }
 
-        // Load recommended jobs dengan algoritma baru
+        // Save to history
+        savePredictionToHistory()
+
+        // Load recommended jobs
         loadRecommendedJobs()
+    }
+
+    /**
+     * Save prediction result to Firestore history
+     */
+    private fun savePredictionToHistory() {
+        val history = PredictionHistory(
+            jobTitle = inputJobTitle,
+            location = inputLocation,
+            predictedSalary = predictedSalary,
+            salaryFormatted = salaryFormatted,
+            salaryMin = salaryMin,
+            salaryMax = salaryMax,
+            rangeFormatted = rangeFormatted,
+            category = category,
+            level = level,
+            tier = tier
+        )
+
+        lifecycleScope.launch {
+            val result = historyRepository.savePrediction(history)
+
+            result.onSuccess {
+                Log.d(TAG, "History saved successfully")
+            }.onFailure { e ->
+                Log.e(TAG, "Failed to save history", e)
+            }
+        }
     }
 
     /**
