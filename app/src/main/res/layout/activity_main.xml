@@ -8,12 +8,15 @@
     <!-- Back Button -->
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_arrow_back"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
         app:tint="@color/text_primary"
         android:contentDescription="Back"
         app:layout_constraintStart_toStartOf="parent"

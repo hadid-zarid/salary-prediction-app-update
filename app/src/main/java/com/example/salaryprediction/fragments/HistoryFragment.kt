@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.salaryprediction.MainActivity
 import com.example.salaryprediction.R
 import com.example.salaryprediction.adapters.HistoryAdapter
+import com.example.salaryprediction.dialogs.HistoryDetailDialog
 import com.example.salaryprediction.models.PredictionHistory
 import com.example.salaryprediction.repository.HistoryRepository
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -62,12 +63,8 @@ class HistoryFragment : Fragment() {
     private fun setupRecyclerView() {
         historyAdapter = HistoryAdapter(
             onItemClick = { history ->
-                // Navigate ke MainActivity dengan data pre-filled
-                val intent = Intent(requireContext(), MainActivity::class.java).apply {
-                    putExtra("JOB_TITLE", history.jobTitle)
-                    putExtra("LOCATION", history.location)
-                }
-                startActivity(intent)
+                // Show detail dialog
+                showDetailDialog(history)
             },
             onDeleteClick = { history ->
                 showDeleteConfirmation(history)
@@ -78,6 +75,11 @@ class HistoryFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = historyAdapter
         }
+    }
+
+    private fun showDetailDialog(history: PredictionHistory) {
+        val dialog = HistoryDetailDialog(requireContext(), history)
+        dialog.show()
     }
 
     private fun setupClickListeners() {

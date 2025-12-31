@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import com.example.salaryprediction.api.*
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         initViews()
         setupClickListeners()
+        setupBackNavigation()
 
         // Check for pre-filled data from intent
         handleIntentData()
@@ -47,9 +49,30 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Setup back navigation untuk system back button
+     */
+    private fun setupBackNavigation() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateBack()
+            }
+        })
+    }
+
+    /**
+     * Navigate back ke halaman sebelumnya dengan animasi
+     */
+    private fun navigateBack() {
+        finish()
+        @Suppress("DEPRECATION")
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+    }
+
     private fun setupClickListeners() {
+        // Back button click - kembali ke halaman sebelumnya
         btnBack.setOnClickListener {
-            finish()
+            navigateBack()
         }
 
         btnPredict.setOnClickListener {

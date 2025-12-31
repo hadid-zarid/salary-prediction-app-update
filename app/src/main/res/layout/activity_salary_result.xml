@@ -18,21 +18,24 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_arrow_back"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
             app:tint="@color/text_primary"
             android:contentDescription="Back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="serif"
             android:text="Hasil Estimasi Gaji"
             android:textColor="@color/primary"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="serif" />
+            android:textStyle="bold" />
 
     </LinearLayout>
 

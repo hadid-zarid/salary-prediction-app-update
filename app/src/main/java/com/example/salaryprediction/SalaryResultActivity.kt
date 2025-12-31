@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,6 +48,9 @@ class SalaryResultActivity : AppCompatActivity() {
 
         historyRepository = HistoryRepository.getInstance()
 
+        // Setup back navigation
+        setupBackNavigation()
+
         // Get data dari intent
         predictedSalary = intent.getDoubleExtra("PREDICTED_SALARY", 0.0)
         inputJobTitle = intent.getStringExtra("JOB_TITLE") ?: ""
@@ -69,14 +73,14 @@ class SalaryResultActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tvLevel).text = level
         findViewById<TextView>(R.id.tvTierLokasi).text = tier
 
-        // Back button
+        // Back button - kembali ke halaman input
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
-            finish()
+            navigateBack()
         }
 
-        // Finish button
+        // Finish button - kembali ke Dashboard
         findViewById<MaterialButton>(R.id.btnFinish).setOnClickListener {
-            finish()
+            navigateBack()
         }
 
         // Save to history
@@ -84,6 +88,26 @@ class SalaryResultActivity : AppCompatActivity() {
 
         // Load recommended jobs
         loadRecommendedJobs()
+    }
+
+    /**
+     * Setup back navigation untuk system back button
+     */
+    private fun setupBackNavigation() {
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                navigateBack()
+            }
+        })
+    }
+
+    /**
+     * Navigate back ke halaman sebelumnya dengan animasi
+     */
+    private fun navigateBack() {
+        finish()
+        @Suppress("DEPRECATION")
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
     }
 
     /**
